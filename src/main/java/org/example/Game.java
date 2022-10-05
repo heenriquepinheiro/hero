@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class Game {
     private Screen screen;
+    private Arena arena;
     Hero hero = new Hero(10, 10);
     public Game(){
         try {
@@ -47,11 +48,11 @@ public class Game {
         }
     }
     private void processKey(KeyStroke key) {
-        System.out.println(key);
-        if (key.getKeyType() == KeyType.ArrowUp) hero.moveUp();
-        if (key.getKeyType() == KeyType.ArrowDown) hero.moveDown();
-        if (key.getKeyType() == KeyType.ArrowRight) hero.moveRight();
-        if (key.getKeyType() == KeyType.ArrowLeft) hero.moveLeft();
+        arena.processKey(key);
+    }
+    public void moveHero(Position position) {
+        if (canHeroMove(position))
+            hero.setPosition(position);
     }
 }
 

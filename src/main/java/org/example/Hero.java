@@ -10,26 +10,25 @@ public class Hero {
     private Position position;
 
     public Hero(int i1, int i2){
-        this.x = i1;
-        this.y = i2;
+        this.position.setX(i1);
+        this.position.setY(i2);
     }
 
-    public int getX() {return x;}
-    public int getY() {return y;}
-    public void setX(int new_x) {this.x = new_x;}
-    public void setY(int new_y) {this.y = new_y;}
+    public Position moveUp() {
+        return new Position(position.getX(), position.getY() + 1);
+    }
+    public Position moveDown() {
+        return new Position(position.getX(), position.getY() - 1);
+    }
+    public Position moveRight() {
+        return new Position(position.getX() + 1, position.getY());
+    }
+    public Position moveLeft() {
+        return new Position(position.getX() + 1, position.getY());
+    }
 
-    public void moveUp(){
-        this.y++;
-    }
-    public void moveDown(){
-        this.y--;
-    }
-    public void moveRight(){
-        this.x++;
-    }
-    public void moveLeft(){
-        this.x--;
+    public void setPosition(Position position_){
+        this.position = position_;
     }
 
     public void draw(Screen screen) throws IOException {
