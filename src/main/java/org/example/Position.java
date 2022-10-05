@@ -1,6 +1,6 @@
 package org.example;
 
-public class Positions {
+public class Position {
     private int x;
     private int y;
 
