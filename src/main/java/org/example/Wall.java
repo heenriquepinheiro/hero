@@ -1,22 +1,18 @@
 package org.example;
 
-public class Wall {
-    private int x;
-    private int y;
-    Position position;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
-    public Wall(int i1, int i2) {
-        this.x = i1;
-        this.y = i2;
-    }
+public class Wall extends Element{
+   public Wall(int i1, int i2) {super(i1, i2);}
+    public Position getPosition() {return position;}
+    public void setPosition(Position position) {this.position = position;}
 
-    public Position getPosition() {
-
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
+    @Override
+    public void draw(TextGraphics graphics) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#FF5722"));
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), " ");
     }
 
 }
