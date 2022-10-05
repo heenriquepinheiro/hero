@@ -1,6 +1,10 @@
 package org.example;
 
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
@@ -13,6 +17,12 @@ public class Hero {
         this.position.setX(i1);
         this.position.setY(i2);
     }
+
+    public Position getPosition(){
+        return position;
+    }
+
+
 
     public Position moveUp() {
         return new Position(position.getX(), position.getY() + 1);
@@ -31,10 +41,11 @@ public class Hero {
         this.position = position_;
     }
 
-    public void draw(Screen screen) throws IOException {
-        this.screen.clear();
-        this.screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
-        this.screen.refresh();
+    public void draw(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
+                graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(position.getX(),
+                position.getY()), "X");
     }
 
 

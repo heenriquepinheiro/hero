@@ -2,6 +2,7 @@ package org.example;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 public class Game {
     private Screen screen;
+    TextGraphics graphics = screen.newTextGraphics();
     private Arena arena;
     Hero hero = new Hero(10, 10);
     public Game(){
@@ -33,7 +35,7 @@ public class Game {
     }
     private void draw() throws IOException {
         screen.clear();
-        hero.draw(screen);
+        arena.draw((Screen) screen.newTextGraphics());
         screen.refresh();
     }
     void run() throws IOException {
@@ -50,9 +52,6 @@ public class Game {
     private void processKey(KeyStroke key) {
         arena.processKey(key);
     }
-    public void moveHero(Position position) {
-        if (canHeroMove(position))
-            hero.setPosition(position);
-    }
+
 }
 
