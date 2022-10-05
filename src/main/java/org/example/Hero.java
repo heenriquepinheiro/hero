@@ -22,8 +22,6 @@ public class Hero {
         return position;
     }
 
-
-
     public Position moveUp() {
         return new Position(position.getX(), position.getY() + 1);
     }
@@ -43,10 +41,7 @@ public class Hero {
 
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
-                graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(position.getX(),
-                position.getY()), "X");
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
     }
-
-
 }
