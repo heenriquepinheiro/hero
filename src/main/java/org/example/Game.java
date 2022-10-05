@@ -1,6 +1,7 @@
 package org.example;
 
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -16,13 +17,17 @@ public class Game {
         Screen screen;
         screen = null;
         screen.clear();
-        screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')
-                [0]);
+        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
         screen.refresh();
     }
     void run() throws IOException {
         draw();
-
+        TerminalScreen screen = null;
+        KeyStroke key = screen.readInput();
+        processKey(key);
+    }
+    private void processKey(KeyStroke key) {
+        System.out.println(key);
     }
 }
 
