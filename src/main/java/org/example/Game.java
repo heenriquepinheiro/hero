@@ -2,6 +2,7 @@ package org.example;
 
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -21,13 +22,22 @@ public class Game {
         screen.refresh();
     }
     void run() throws IOException {
-        draw();
-        TerminalScreen screen = null;
-        KeyStroke key = screen.readInput();
-        processKey(key);
+        while (true) {
+            draw();
+            TerminalScreen screen = null;
+            KeyStroke key = screen.readInput();
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
+            if (key.getKeyType() == KeyType.EOF) break;
+            processKey(key);
+
+        }
     }
     private void processKey(KeyStroke key) {
         System.out.println(key);
+        if (key.getKeyType() == KeyType.ArrowUp) y = y + 1;
+        if (key.getKeyType() == KeyType.ArrowDown) y = y - 1;
+        if (key.getKeyType() == KeyType.ArrowRight) x = x + 1;
+        if (key.getKeyType() == KeyType.ArrowLeft) x = x - 1;
     }
 }
 
