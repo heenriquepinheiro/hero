@@ -9,25 +9,9 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
-    public static void main(String[] args) throws IOException {
-        Screen screen;
-        screen = null;
-        try {
-            Terminal terminal = new
-                    DefaultTerminalFactory().createTerminal();
-            screen = new TerminalScreen(terminal);
-            screen.setCursorPosition(null);
-            screen.startScreen();
-            screen.doResizeIfNecessary();
-            screen.clear();
-            screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')
-                    [0]);
-            screen.refresh();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+    private int x = 10;
+    private int y = 10;
+    public Game(){    }
     private void draw() throws IOException {
         Screen screen;
         screen = null;
