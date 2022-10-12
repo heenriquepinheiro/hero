@@ -10,8 +10,6 @@ import com.googlecode.lanterna.screen.Screen;
 import java.io.IOException;
 
 public class Hero extends Element{
-    private Screen screen;
-    private Position position;
 
     public Hero(int i1, int i2){super(i1,i2);}
 
@@ -32,9 +30,6 @@ public class Hero extends Element{
         return new Position(position.getX() + 1, position.getY());
     }
 
-    public void setPosition(Position position_){
-        this.position = position_;
-    }
 
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));

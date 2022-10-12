@@ -18,17 +18,16 @@ public class Game {
     TextGraphics graphics = screen.newTextGraphics();
     private Arena arena;
     Hero hero = new Hero(10, 10);
-    public Game(){
+    public Game(int width, int height){
         try {
-            TerminalSize terminalSize = new TerminalSize(40, 20);
+            TerminalSize terminalSize = new TerminalSize(width, height);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
             Terminal terminal = terminalFactory.createTerminal();
             screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null); // we don't need a cursor
             screen.startScreen(); // screens must be started
             screen.doResizeIfNecessary(); // resize screen if necessary
-
-
+            arena = new Arena (width, height);
         } catch (IOException e) {
             e.printStackTrace();
         }
