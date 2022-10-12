@@ -15,9 +15,9 @@ import java.io.IOException;
 
 public class Game {
     private Screen screen;
-    TextGraphics graphics = screen.newTextGraphics();
+
     private Arena arena;
-    Hero hero = new Hero(10, 10);
+
     public Game(int width, int height){
         try {
             TerminalSize terminalSize = new TerminalSize(width, height);
@@ -34,13 +34,12 @@ public class Game {
     }
     private void draw() throws IOException {
         screen.clear();
-        arena.draw((TextGraphics) screen.newTextGraphics());
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
     }
     void run() throws IOException {
         while (true) {
             draw();
-            TerminalScreen screen = null;
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
             if (key.getKeyType() == KeyType.EOF) break;

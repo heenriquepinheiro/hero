@@ -43,7 +43,7 @@ public class Arena {
 
     private List<Monster> createMonsters() {
         Random random = new Random();
-        ArrayList<Monster> coins = new ArrayList<>();
+        ArrayList<Monster> monsters = new ArrayList<>();
         for (int i = 0; i < 5; i++)
             monsters.add(new Monster(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
         return monsters;
@@ -65,8 +65,8 @@ public class Arena {
     }
 
      public void processKey(KeyStroke key) {
-        if (key.getKeyType() == KeyType.ArrowUp) moveHero(hero.moveUp());
-        if (key.getKeyType() == KeyType.ArrowDown) moveHero(hero.moveDown());
+        if (key.getKeyType() == KeyType.ArrowUp) moveHero(hero.moveDown());
+        if (key.getKeyType() == KeyType.ArrowDown) moveHero(hero.moveUp());
         if (key.getKeyType() == KeyType.ArrowRight) moveHero(hero.moveRight());
         if (key.getKeyType() == KeyType.ArrowLeft) moveHero(hero.moveLeft());
 
@@ -75,9 +75,9 @@ public class Arena {
 
     public boolean canHeroMove(Position position){
         if (position.getX() < 0) return false;
-        if (position.getX() > this.width - 1) return false;
+        if (position.getX() > width - 1) return false;
         if (position.getY() < 0) return false;
-        if (position.getY() > this.height - 1) return false;
+        if (position.getY() > height - 1) return false;
         for (Wall wall : walls) {
             if (wall.getPosition().equals(position)) return false;
         }

@@ -27,7 +27,7 @@ public class Hero extends Element{
         return new Position(position.getX() + 1, position.getY());
     }
     public Position moveLeft() {
-        return new Position(position.getX() + 1, position.getY());
+        return new Position(position.getX() - 1, position.getY());
     }
 
 
